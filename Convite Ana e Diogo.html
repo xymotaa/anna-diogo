@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana & Diogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" data-screen-label="Hero">
+  <div class="hero__bg"></div>
+  <div class="hero__inner">
+    <div class="hero__frame">
+      <h1 class="hero__names">Ana &amp; Diogo</h1>
+      <p class="hero__date">27 . 11 . 2026</p>
+      <p class="hero__sub">Sábado &middot; Reserve esta data</p>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Role</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- ===================== INTRO ===================== -->
+<section class="section-pad intro" data-screen-label="Convite">
+  <div class="wrap reveal">
+    <span class="garland-deco" aria-hidden="true"></span>
+    <div class="monogram">A &middot; D</div>
+    <p class="lead">“Com a bênção de Deus e de nossas famílias, convidamos você para celebrar o início da nossa história para sempre.”</p>
+    <div class="sign">Ana &amp; Diogo</div>
+  </div>
+</section>
+
+<!-- ===================== OS NOIVOS ===================== -->
+<section class="section-pad" style="background:var(--cream-2)" data-screen-label="Os noivos">
+  <span class="vine-deco left" aria-hidden="true"></span>
+  <span class="vine-deco right" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Os noivos</span>
+      <h2>Duas vidas, <em>uma só</em> história</h2>
+      <div class="ornament"><span class="diamond"></span></div>
+    </div>
+    <div class="couple-feature reveal">
+      <div class="couple-feature__img">
+        <img src="assets/couple-rock.jpg" alt="Ana e Diogo">
+      </div>
+      <div class="persons">
+        <div class="person">
+          <span class="role label">A noiva</span>
+          <h3>Ana Carolina</h3>
+          <p>Escreva aqui um parágrafo curto sobre a noiva — quem ela é, o que ama, uma frase que a defina. Este texto é só um exemplo para você editar.</p>
+        </div>
+        <div class="amp">&amp;</div>
+        <div class="person">
+          <span class="role label">O noivo</span>
+          <h3>Diogo Santos</h3>
+          <p>Escreva aqui um parágrafo curto sobre o noivo — quem ele é, o que ama, uma frase que o defina. Este texto é só um exemplo para você editar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NOSSA HISTÓRIA ===================== -->
+<section class="section-pad" data-screen-label="Nossa história">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Nossa história</span>
+      <h2>Como tudo <em>começou</em></h2>
+      <div class="ornament"><span class="diamond"></span></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item right reveal">
+        <div class="tl-media"><img src="assets/walk-hands.jpg" alt="O primeiro encontro"></div>
+        <div class="tl-node"><span class="dot"></span></div>
+        <div class="tl-text">
+          <span class="date">Maio de 2019</span>
+          <h3>O primeiro encontro</h3>
+          <p>Conte aqui como vocês se conheceram. Um lugar, uma data, aquele primeiro olhar. Edite este texto livremente.</p>
+        </div>
+      </div>
+      <div class="tl-item left reveal">
+        <div class="tl-media"><img src="assets/lift-arch.jpg" alt="O namoro"></div>
+        <div class="tl-node"><span class="dot"></span></div>
+        <div class="tl-text">
+          <span class="date">Dezembro de 2020</span>
+          <h3>O começo do namoro</h3>
+          <p>Um momento marcante da relação de vocês. A primeira viagem, o primeiro “eu te amo”. Texto de exemplo para editar.</p>
+        </div>
+      </div>
+      <div class="tl-item right reveal">
+        <div class="tl-media"><img src="assets/forehead-kiss.jpg" alt="O pedido"></div>
+        <div class="tl-node"><span class="dot"></span></div>
+        <div class="tl-text">
+          <span class="date">Abril de 2025</span>
+          <h3>O pedido</h3>
+          <p>O dia do “sim”. Como foi, onde foi, quem estava por perto. Substitua por sua própria história.</p>
+        </div>
+      </div>
+      <div class="tl-item left reveal">
+        <div class="tl-media"><img src="assets/kiss-path.jpg" alt="O grande dia"></div>
+        <div class="tl-node"><span class="dot"></span></div>
+        <div class="tl-text">
+          <span class="date">27 de Novembro de 2026</span>
+          <h3>O grande dia</h3>
+          <p>E agora é com você: queremos viver esse momento ao seu lado. Confirme sua presença mais abaixo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTAGEM REGRESSIVA ===================== -->
+<section class="section-pad dark countdown" data-screen-label="Contagem regressiva">
+  <div class="countdown__bg"></div>
+  <div class="wrap countdown__inner reveal">
+    <span class="label">Faltam</span>
+    <h2 class="serif-h" style="font-size:clamp(2rem,4vw,2.8rem);margin:18px 0 0;">para dizermos “sim”</h2>
+    <div class="cd-grid" id="countdown">
+      <div class="cd-unit"><div class="num" id="cd-days">000</div><span class="lab">Dias</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><div class="num" id="cd-hours">00</div><span class="lab">Horas</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><div class="num" id="cd-min">00</div><span class="lab">Minutos</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><div class="num" id="cd-sec">00</div><span class="lab">Segundos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DETALHES DO EVENTO ===================== -->
+<section class="section-pad" style="background:var(--cream-2)" data-screen-label="Detalhes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Celebração</span>
+      <h2>Junte-se a <em>nós</em></h2>
+      <div class="ornament"><span class="diamond"></span></div>
+    </div>
+    <div class="events">
+      <div class="ev-card reveal">
+        <div class="ev-ico">&#9962;</div>
+        <h3>Cerimônia</h3>
+        <div class="ev-when">Sábado, 27 nov 2026 &middot; 16h00</div>
+        <div class="ev-divider"></div>
+        <p class="ev-where">Nome do local da cerimônia</p>
+        <p class="ev-addr">Rua Exemplo, 123 — Bairro<br>Cidade — Estado</p>
+      </div>
+      <div class="ev-card reveal">
+        <div class="ev-ico">&#127870;</div>
+        <h3>Recepção</h3>
+        <div class="ev-when">Sábado, 27 nov 2026 &middot; 19h00</div>
+        <div class="ev-divider"></div>
+        <p class="ev-where">Nome do espaço da festa</p>
+        <p class="ev-addr">Av. Exemplo, 456 — Bairro<br>Cidade — Estado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOCALIZAÇÃO ===================== -->
+<section class="section-pad location" data-screen-label="Localização">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Como chegar</span>
+      <h2>Localização</h2>
+      <div class="ornament"><span class="diamond"></span></div>
+    </div>
+    <div class="map-frame reveal">
+      <div class="pin">
+        <span class="mk">&#9906;</span>
+        Substitua por um mapa incorporado<br>(Google Maps &middot; iframe)
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:34px;">
+      <a class="btn ghost" href="https://maps.google.com" target="_blank" rel="noopener">Abrir no Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRAJE (DRESS CODE) ===================== -->
+<section class="section-pad" style="background:var(--cream-2)" data-screen-label="Traje">
+  <div class="wrap">
+    <div class="dress">
+      <div class="dress__media reveal">
+        <img src="assets/wall-lean.jpg" alt="Inspiração de traje">
+        <span class="tag">Esporte fino</span>
+      </div>
+      <div class="dress__body reveal">
+        <span class="label">Como se vestir</span>
+        <h2>Traje &amp; paleta</h2>
+        <p>Pedimos um traje <strong style="color:var(--terracotta);font-weight:500;">esporte fino</strong>. Para harmonizar com o nosso dia, inspire-se na nossa paleta verde — eucalipto, sálvia, oliva, musgo, com toques de creme e dourado. Sinta-se à vontade para editar este texto.</p>
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#46654E"></div><span>Eucalipto</span></div>
+          <div class="swatch"><div class="chip" style="background:#8FA382"></div><span>Sálvia</span></div>
+          <div class="swatch"><div class="chip" style="background:#6C7056"></div><span>Oliva</span></div>
+          <div class="swatch"><div class="chip" style="background:#324B39"></div><span>Musgo</span></div>
+          <div class="swatch"><div class="chip" style="background:#EFE5D4"></div><span>Creme</span></div>
+          <div class="swatch"><div class="chip" style="background:#B08A57"></div><span>Dourado</span></div>
+        </div>
+        <p class="dress-note">Por gentileza, deixe o <strong>branco</strong> e o <strong>off-white</strong> reservados para a noiva. &#128154;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERIA ===================== -->
+<section class="section-pad" data-screen-label="Galeria">
+  <span class="vine-deco left" aria-hidden="true"></span>
+  <span class="vine-deco right" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Momentos</span>
+      <h2>Nossa <em>galeria</em></h2>
+      <div class="ornament"><span class="diamond"></span></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure class="g-tall"><img src="assets/forehead-kiss.jpg" alt="Ana e Diogo"></figure>
+      <figure class="g-wide"><img src="assets/walk-hands.jpg" alt="Ana e Diogo"></figure>
+      <figure><img src="assets/lift-bw.jpg" alt="Ana e Diogo"></figure>
+      <figure><img src="assets/river.jpg" alt="Ana e Diogo"></figure>
+      <figure><img src="assets/lift-arch.jpg" alt="Ana e Diogo"></figure>
+      <figure class="g-tall"><img src="assets/wall-lean.jpg" alt="Ana e Diogo"></figure>
+      <figure class="g-wide"><img src="assets/hero-walk.jpg" alt="Ana e Diogo"></figure>
+      <figure><img src="assets/river-bw.jpg" alt="Ana e Diogo"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RSVP ===================== -->
+<section class="section-pad rsvp" style="background:var(--cream-2)" data-screen-label="Confirmar presença">
+  <div class="rsvp__bg"></div>
+  <div class="wrap rsvp__inner">
+    <div class="sec-head reveal">
+      <span class="label">Confirme sua presença</span>
+      <h2>Você vem <em>celebrar</em>?</h2>
+      <div class="ornament"><span class="diamond"></span></div>
+    </div>
+    <div class="rsvp-card reveal">
+      <img class="card-sprig tl" src="assets/sprig-corner.svg" alt="" aria-hidden="true">
+      <img class="card-sprig br" src="assets/sprig-corner.svg" alt="" aria-hidden="true">
+      <div id="rsvp-card-inner">
+        <form class="rsvp-form" id="rsvp-form">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome e sobrenome" required>
+          </div>
+
+          <div class="field">
+            <label>Você poderá comparecer?</label>
+            <div class="choice">
+              <label><input type="radio" name="presenca" value="sim" checked><span>Sim, eu vou! &#10003;</span></label>
+              <label><input type="radio" name="presenca" value="nao"><span>Não poderei ir</span></label>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="acompanhantes">Nº de acompanhantes</label>
+              <select id="acompanhantes" name="acompanhantes">
+                <option value="0">Apenas eu</option>
+                <option value="1">+1</option>
+                <option value="2">+2</option>
+                <option value="3">+3</option>
+                <option value="4">+4</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone / WhatsApp</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="mensagem">Recado para os noivos</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Deixe uma mensagem carinhosa (opcional)"></textarea>
+          </div>
+
+          <button type="submit" class="btn">Enviar confirmação</button>
+          <p class="rsvp-deadline">Por favor, confirme até <strong>01 de novembro de 2026</strong>.</p>
+        </form>
+      </div>
+
+      <div class="rsvp-success" id="rsvp-success">
+        <div class="check">&#10003;</div>
+        <h3>Obrigado<span id="rsvp-name-out"></span>!</h3>
+        <p id="rsvp-success-sub">Mal podemos esperar para celebrar com você. Toque abaixo para enviar sua confirmação aos noivos.</p>
+        <a class="btn" id="rsvp-wa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="footer" data-screen-label="Rodapé">
+  <div class="wrap reveal">
+    <span class="garland-deco cream" aria-hidden="true"></span>
+    <p class="names">Ana &amp; Diogo</p>
+    <p class="sub">27 de Novembro de 2026</p>
+    <p class="thanks">Com amor, esperamos por você.</p>
+  </div>
+</footer>
+
+<script src="script.js?v=4"></script>
+</body>
+</html>
