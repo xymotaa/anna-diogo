@@ -673,8 +673,8 @@ section { position: relative; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
   .timeline::before { left: 26px; }
   .tl-item { grid-template-columns: 52px 1fr; gap: 8px; }
-  .tl-item.left .tl-text, .tl-item.right .tl-text { order: 3; text-align: left; padding: 14px 0 0; grid-column: span 2; }
-  .tl-item.left .tl-node, .tl-item.right .tl-node { order: 1; justify-content: flex-start; }
+  .tl-item.left .tl-text, .tl-item.right .tl-text { order: 3; text-align: left; padding: 14px 0 0 60px; grid-column: span 2; }
+  .tl-item.left .tl-node, .tl-item.right .tl-node { order: 1; }
   .tl-item.left .tl-media, .tl-item.right .tl-media { order: 2; }
   .tl-media { aspect-ratio: 16/10; }
   .row-2 { grid-template-columns: 1fr; }
