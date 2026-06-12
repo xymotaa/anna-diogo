@@ -177,7 +177,7 @@ section { position: relative; }
 }
 .hero__bg {
   position: absolute; inset: 0;
-  background: url("assets/hero-walk.jpg") center 28% / cover no-repeat;
+  background: url("assets/hero.webp") center 28% / cover no-repeat;
   transform: scale(1.04);
 }
 .hero__bg::after {
