@@ -631,9 +631,7 @@ section { position: relative; }
   font-style: italic;
   font-weight: 600;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  text-align: justify;
 }
 .notice-icon {
   width: 16px;
