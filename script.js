@@ -142,6 +142,37 @@
       var acomp = (data.get("acompanhantes") || "0").toString();
       var msg = (data.get("mensagem") || "").toString().trim();
 
+      // Valida nomes de acompanhantes
+      var acompCount = parseInt(acomp) || 0;
+      for (var v = 1; v <= acompCount; v++) {
+        var acompInput = document.getElementById("acomp_nome_" + v);
+        if (!acompInput || !acompInput.value.trim()) {
+          acompInput && acompInput.focus();
+          acompInput && acompInput.scrollIntoView({ behavior: "smooth", block: "center" });
+          acompInput && (acompInput.style.borderColor = "var(--accent)");
+          acompInput && acompInput.addEventListener("input", function () { this.style.borderColor = ""; }, { once: true });
+          alert("Por favor, preencha o nome do acompanhante " + v + ".");
+          return;
+        }
+      }
+
+      // Valida nomes de crianças
+      var criancasVal = (data.get("criancas") || "nao").toString();
+      if (criancasVal === "sim") {
+        var numCriancasVal = parseInt(data.get("num_criancas") || "0");
+        for (var k = 1; k <= numCriancasVal; k++) {
+          var criancaInput = document.getElementById("crianca_nome_" + k);
+          if (!criancaInput || !criancaInput.value.trim()) {
+            criancaInput && criancaInput.focus();
+            criancaInput && criancaInput.scrollIntoView({ behavior: "smooth", block: "center" });
+            criancaInput && (criancaInput.style.borderColor = "var(--accent)");
+            criancaInput && criancaInput.addEventListener("input", function () { this.style.borderColor = ""; }, { once: true });
+            alert("Por favor, preencha o nome da criança " + k + ".");
+            return;
+          }
+        }
+      }
+
       // Monta mensagem para WhatsApp
       var linhas = [];
       linhas.push("Confirmacao de presenca — Casamento Ana & Diogo");
@@ -149,7 +180,6 @@
       linhas.push(presenca === "sim" ? "Presenca: Vou comparecer ✓" : "Presenca: Nao poderei ir");
       if (presenca === "sim") {
         linhas.push("Acompanhantes: " + acomp);
-        var acompCount = parseInt(acomp) || 0;
         for (var i = 1; i <= acompCount; i++) {
           var acompNome = (data.get("acomp_nome_" + i) || "").toString().trim();
           linhas.push("  Acomp. " + i + ": " + (acompNome || "—"));
