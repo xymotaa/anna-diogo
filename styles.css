@@ -624,11 +624,12 @@ section { position: relative; }
 
 .field-notice {
   margin: 8px 0 0;
-  font-size: .92rem;
+  font-size: .78rem;
   color: #B94040;
   font-family: var(--sans);
   letter-spacing: .04em;
   font-style: italic;
+  font-weight: 600;
   text-transform: uppercase;
   display: flex;
   align-items: center;
