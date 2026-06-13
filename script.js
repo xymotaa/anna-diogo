@@ -64,10 +64,6 @@
         '<div class="field">' +
           '<label for="acomp_nome_' + i + '">Nome completo</label>' +
           '<input type="text" id="acomp_nome_' + i + '" name="acomp_nome_' + i + '" placeholder="Nome do acompanhante">' +
-        '</div>' +
-        '<div class="field">' +
-          '<label for="acomp_tel_' + i + '">Telefone / WhatsApp</label>' +
-          '<input type="tel" id="acomp_tel_' + i + '" name="acomp_tel_' + i + '" placeholder="(00) 00000-0000">' +
         '</div>';
       companionsContainer.appendChild(card);
       (function (c) {
@@ -101,10 +97,7 @@
         var acompCount = parseInt(acomp) || 0;
         for (var i = 1; i <= acompCount; i++) {
           var acompNome = (data.get("acomp_nome_" + i) || "").toString().trim();
-          var acompTel  = (data.get("acomp_tel_"  + i) || "").toString().trim();
-          var linha = "  Acomp. " + i + ": " + (acompNome || "—");
-          if (acompTel) linha += " | " + acompTel;
-          linhas.push(linha);
+          linhas.push("  Acomp. " + i + ": " + (acompNome || "—"));
         }
       }
       if (msg) linhas.push("Recado: " + msg);
