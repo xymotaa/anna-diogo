@@ -49,6 +49,37 @@
     reveals.forEach(function (r) { r.classList.add("in"); });
   }
 
+  /* ---------- Cards de acompanhantes ---------- */
+  var acompSelect = document.getElementById("acompanhantes");
+  var companionsContainer = document.getElementById("companions-container");
+
+  function updateCompanionCards() {
+    var count = parseInt(acompSelect.value) || 0;
+    companionsContainer.innerHTML = "";
+    for (var i = 1; i <= count; i++) {
+      var card = document.createElement("div");
+      card.className = "companion-card";
+      card.innerHTML =
+        '<div class="companion-card__header"><span class="label">Acompanhante ' + i + '</span></div>' +
+        '<div class="field">' +
+          '<label for="acomp_nome_' + i + '">Nome completo</label>' +
+          '<input type="text" id="acomp_nome_' + i + '" name="acomp_nome_' + i + '" placeholder="Nome do acompanhante">' +
+        '</div>' +
+        '<div class="field">' +
+          '<label for="acomp_tel_' + i + '">Telefone / WhatsApp</label>' +
+          '<input type="tel" id="acomp_tel_' + i + '" name="acomp_tel_' + i + '" placeholder="(00) 00000-0000">' +
+        '</div>';
+      companionsContainer.appendChild(card);
+      (function (c) {
+        requestAnimationFrame(function () { c.classList.add("in"); });
+      }(card));
+    }
+  }
+
+  if (acompSelect && companionsContainer) {
+    acompSelect.addEventListener("change", updateCompanionCards);
+  }
+
   /* ---------- RSVP ---------- */
   var form = document.getElementById("rsvp-form");
   if (form) {
@@ -65,7 +96,17 @@
       linhas.push("Confirmacao de presenca — Casamento Ana & Diogo");
       linhas.push("Nome: " + (nome || "—"));
       linhas.push(presenca === "sim" ? "Presenca: Vou comparecer ✓" : "Presenca: Nao poderei ir");
-      if (presenca === "sim") linhas.push("Acompanhantes: " + acomp);
+      if (presenca === "sim") {
+        linhas.push("Acompanhantes: " + acomp);
+        var acompCount = parseInt(acomp) || 0;
+        for (var i = 1; i <= acompCount; i++) {
+          var acompNome = (data.get("acomp_nome_" + i) || "").toString().trim();
+          var acompTel  = (data.get("acomp_tel_"  + i) || "").toString().trim();
+          var linha = "  Acomp. " + i + ": " + (acompNome || "—");
+          if (acompTel) linha += " | " + acompTel;
+          linhas.push(linha);
+        }
+      }
       if (msg) linhas.push("Recado: " + msg);
       var texto = encodeURIComponent(linhas.join("\n"));
       var waUrl = "https://wa.me/" + WHATSAPP + "?text=" + texto;
