@@ -734,6 +734,9 @@ section { position: relative; }
   .tl-item.left .tl-media, .tl-item.right .tl-media { order: 2; }
   .tl-media { aspect-ratio: 16/10; }
   .row-2 { grid-template-columns: 1fr; }
+  #children-count-wrap .field label {
+    font-size: .55rem;
+  }
   .field select {
     -webkit-appearance: none;
     appearance: none;
