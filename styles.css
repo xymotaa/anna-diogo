@@ -601,9 +601,11 @@ section { position: relative; }
 .pix-card .copy-hint { font-size: .72rem; color: var(--ink-soft); letter-spacing: .1em; }
 
 /* =========================================================
-   CARDS DE ACOMPANHANTES
+   CARDS DE ACOMPANHANTES E CRIANÇAS
    ========================================================= */
-#companions-container { display: grid; gap: 14px; }
+#companions-container,
+#children-container { display: grid; gap: 14px; }
+
 .companion-card {
   border: 1px solid var(--line);
   background: var(--cream);
@@ -619,6 +621,14 @@ section { position: relative; }
   padding-bottom: 10px;
   border-bottom: 1px solid var(--line);
 }
+
+.children-count-wrap {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.children-count-wrap.in { opacity: 1; transform: none; }
 
 /* =========================================================
    RODAPÉ

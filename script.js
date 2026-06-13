@@ -76,6 +76,61 @@
     acompSelect.addEventListener("change", updateCompanionCards);
   }
 
+  /* ---------- Cards de crianças ---------- */
+  var criancasRadios    = document.querySelectorAll("input[name='criancas']");
+  var childrenCountWrap = document.getElementById("children-count-wrap");
+  var numCriancasSelect = document.getElementById("num-criancas");
+  var childrenContainer = document.getElementById("children-container");
+
+  function updateChildrenCards() {
+    var count = parseInt(numCriancasSelect.value) || 0;
+    childrenContainer.innerHTML = "";
+    for (var i = 1; i <= count; i++) {
+      var card = document.createElement("div");
+      card.className = "companion-card";
+      card.innerHTML =
+        '<div class="companion-card__header"><span class="label">Criança ' + i + '</span></div>' +
+        '<div class="field">' +
+          '<label for="crianca_nome_' + i + '">Nome da criança</label>' +
+          '<input type="text" id="crianca_nome_' + i + '" name="crianca_nome_' + i + '" placeholder="Nome da criança">' +
+        '</div>';
+      childrenContainer.appendChild(card);
+      (function (c) {
+        requestAnimationFrame(function () { c.classList.add("in"); });
+      }(card));
+    }
+  }
+
+  function showChildrenCount() {
+    childrenCountWrap.style.display = "block";
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        childrenCountWrap.classList.add("in");
+        updateChildrenCards();
+      });
+    });
+  }
+
+  function hideChildrenCount() {
+    childrenCountWrap.classList.remove("in");
+    childrenContainer.innerHTML = "";
+    setTimeout(function () { childrenCountWrap.style.display = "none"; }, 350);
+  }
+
+  criancasRadios.forEach(function (radio) {
+    radio.addEventListener("change", function () {
+      if (this.value === "sim") {
+        showChildrenCount();
+      } else {
+        hideChildrenCount();
+      }
+    });
+  });
+
+  if (numCriancasSelect) {
+    numCriancasSelect.addEventListener("change", updateChildrenCards);
+  }
+
   /* ---------- RSVP ---------- */
   var form = document.getElementById("rsvp-form");
   if (form) {
@@ -99,6 +154,17 @@
           var acompNome = (data.get("acomp_nome_" + i) || "").toString().trim();
           linhas.push("  Acomp. " + i + ": " + (acompNome || "—"));
         }
+      }
+      var criancas = (data.get("criancas") || "nao").toString();
+      if (criancas === "sim") {
+        var numCriancas = parseInt(data.get("num_criancas") || "0");
+        linhas.push("Criancas: " + numCriancas);
+        for (var j = 1; j <= numCriancas; j++) {
+          var criancaNome = (data.get("crianca_nome_" + j) || "").toString().trim();
+          linhas.push("  Crianca " + j + ": " + (criancaNome || "—"));
+        }
+      } else {
+        linhas.push("Criancas: Nao");
       }
       if (msg) linhas.push("Recado: " + msg);
       var texto = encodeURIComponent(linhas.join("\n"));

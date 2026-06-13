@@ -237,6 +237,29 @@
           <div id="companions-container"></div>
 
           <div class="field">
+            <label>Você irá levar crianças?</label>
+            <div class="choice">
+              <label><input type="radio" name="criancas" value="nao" checked><span>Não</span></label>
+              <label><input type="radio" name="criancas" value="sim"><span>Sim</span></label>
+            </div>
+          </div>
+
+          <div id="children-count-wrap" class="children-count-wrap">
+            <div class="field">
+              <label for="num-criancas">Quantas crianças?</label>
+              <select id="num-criancas" name="num_criancas">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="children-container"></div>
+
+          <div class="field">
             <label for="mensagem">Recado para os noivos</label>
             <textarea id="mensagem" name="mensagem" placeholder="Deixe uma mensagem carinhosa (opcional)"></textarea>
           </div>
