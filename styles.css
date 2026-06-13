@@ -312,7 +312,7 @@ section { position: relative; }
   margin: 0 0 12px;
   color: var(--espresso);
 }
-.person p { margin: 0; color: var(--ink-soft); font-size: .98rem; }
+.person p { margin: 0; color: var(--ink-soft); font-size: .98rem; text-align: justify; }
 .amp {
   font-family: var(--script);
   color: var(--terracotta);
