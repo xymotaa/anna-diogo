@@ -5,7 +5,7 @@
   "use strict";
 
   /* ---- Data do casamento (EDITE AQUI) ---- */
-  var WEDDING_DATE = new Date("2026-11-27T16:00:00");
+  var WEDDING_DATE = new Date("2026-08-08T16:00:00");
   /* ---- WhatsApp para confirmações (EDITE AQUI, formato 55DDDNUMERO) ---- */
   var WHATSAPP = "5599999999999";
 
