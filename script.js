@@ -6,8 +6,8 @@
 
   /* ---- Data do casamento (EDITE AQUI) ---- */
   var WEDDING_DATE = new Date("2026-08-08T16:00:00");
-  /* ---- WhatsApp para confirmações (EDITE AQUI, formato 55DDDNUMERO) ---- */
-  var WHATSAPP = "5599999999999";
+  /* ---- Webhook do Make que recebe as inscrições (EDITE AQUI) ---- */
+  var RSVP_WEBHOOK_URL = "https://hook.us2.make.com/bakomqifi6pafuiwk37dvvy73ibsif3b";
 
   /* ---------- Contagem regressiva ---------- */
   function pad(n) { return (n < 10 ? "0" : "") + n; }
@@ -173,51 +173,66 @@
         }
       }
 
-      // Monta mensagem para WhatsApp
-      var linhas = [];
-      linhas.push("Confirmacao de presenca — Casamento Ana & Diogo");
-      linhas.push("Nome: " + (nome || "—"));
-      linhas.push(presenca === "sim" ? "Presenca: Vou comparecer ✓" : "Presenca: Nao poderei ir");
-      if (presenca === "sim") {
-        linhas.push("Acompanhantes: " + acomp);
-        for (var i = 1; i <= acompCount; i++) {
-          var acompNome = (data.get("acomp_nome_" + i) || "").toString().trim();
-          linhas.push("  Acomp. " + i + ": " + (acompNome || "—"));
-        }
+      // Monta nomes de acompanhantes e crianças
+      var acompNomes = [];
+      for (var i = 1; i <= acompCount; i++) {
+        acompNomes.push((data.get("acomp_nome_" + i) || "").toString().trim());
       }
       var criancas = (data.get("criancas") || "nao").toString();
-      if (criancas === "sim") {
-        var numCriancas = parseInt(data.get("num_criancas") || "0");
-        linhas.push("Criancas: " + numCriancas);
-        for (var j = 1; j <= numCriancas; j++) {
-          var criancaNome = (data.get("crianca_nome_" + j) || "").toString().trim();
-          linhas.push("  Crianca " + j + ": " + (criancaNome || "—"));
-        }
-      } else {
-        linhas.push("Criancas: Nao");
+      var numCriancas = criancas === "sim" ? (parseInt(data.get("num_criancas") || "0") || 0) : 0;
+      var criancaNomes = [];
+      for (var j = 1; j <= numCriancas; j++) {
+        criancaNomes.push((data.get("crianca_nome_" + j) || "").toString().trim());
       }
-      if (msg) linhas.push("Recado: " + msg);
-      var texto = encodeURIComponent(linhas.join("\n"));
-      var waUrl = "https://wa.me/" + WHATSAPP + "?text=" + texto;
 
-      // Estado de sucesso
-      var card = document.getElementById("rsvp-card-inner");
-      var success = document.getElementById("rsvp-success");
-      var nameOut = document.getElementById("rsvp-name-out");
-      var waBtn = document.getElementById("rsvp-wa");
-      if (nameOut) nameOut.textContent = nome ? nome.split(" ")[0] : "";
-      if (waBtn) waBtn.setAttribute("href", waUrl);
-      if (success) {
-        var subEl = document.getElementById("rsvp-success-sub");
-        if (subEl) {
-          subEl.textContent = presenca === "sim"
-            ? "Mal podemos esperar para celebrar com você. Toque abaixo para enviar sua confirmação aos noivos."
-            : "Vamos sentir sua falta. Toque abaixo para enviar seu recado aos noivos.";
+      var payload = {
+        nome: nome,
+        telefone: (data.get("telefone") || "").toString().trim(),
+        presenca: presenca,
+        acompanhantes: presenca === "sim" ? acompCount : 0,
+        acompanhantes_nomes: acompNomes.join(", "),
+        criancas: numCriancas,
+        criancas_nomes: criancaNomes.join(", "),
+        mensagem: msg,
+        enviado_em: new Date().toISOString()
+      };
+
+      function mostrarSucesso() {
+        var card = document.getElementById("rsvp-card-inner");
+        var success = document.getElementById("rsvp-success");
+        var nameOut = document.getElementById("rsvp-name-out");
+        if (nameOut) nameOut.textContent = nome ? nome.split(" ")[0] : "";
+        if (success) {
+          var subEl = document.getElementById("rsvp-success-sub");
+          if (subEl) {
+            subEl.textContent = presenca === "sim"
+              ? "Mal podemos esperar para celebrar com você!"
+              : "Vamos sentir sua falta. Obrigado por nos avisar!";
+          }
         }
+        if (card) card.style.display = "none";
+        if (success) success.classList.add("show");
       }
-      if (card) card.style.display = "none";
-      if (success) success.classList.add("show");
-      success.scrollIntoView ? null : null; // evitar uso de scrollIntoView
+
+      var submitBtn = form.querySelector("button[type='submit']");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+      }
+
+      fetch(RSVP_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(function () { mostrarSucesso(); })
+        .catch(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Confirmar presença";
+          }
+          alert("Não foi possível enviar sua confirmação. Verifique sua internet e tente novamente.");
+        });
     });
   }
 
